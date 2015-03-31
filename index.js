@@ -1,7 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var app = express();
+var server = app.listen(8080, function () {
+    console.log('server started!');
+});
+var io = require('socket.io').listen(server);
+
 
 app.set('views', 'views');
 app.set('view engine', 'jade');
@@ -28,6 +32,6 @@ require('./app/auth')(app);
 
 app.use(express.static('./public'));
 
-app.listen(8080, function () {
-    console.log('server started!');
-});
+require('./app/chat.js')(io);
+
+

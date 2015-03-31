@@ -33,4 +33,8 @@ router.get('/authTest', function(req, res) {
   res.render('login', { 'user': req.user });
 });
 
+router.get('/chat', function(req, res) {
+  res.render('chat');
+});
+
 module.exports = router;
