@@ -1,5 +1,4 @@
 var router = require('express').Router();
-var getSongs = require('./getSongs');
 var controller = require('./controller');
 var isAuth = require('./isAuth');
 var q = require('q');
@@ -25,16 +24,12 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/songs/:q', function(req, res) {
-  getSongs(req.params.q).done(function(songs) {
-    res.json(songs);
-  });
-});
 
 router.get('/authTest', function(req, res) {
   res.render('login', { 'user': req.user });
 });
 
+router.get('/songs/:q', controller.songs);
 router.get('/chat', isAuth, controller.chat);
 
 module.exports = router;

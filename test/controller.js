@@ -1,11 +1,12 @@
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
+var rewire = require('rewire');
 var expect = chai.expect;
 
 chai.use(sinonChai);
 
-var controller = require('../app/controller');
+var controller = rewire('../app/controller');
 
 describe('#chat', function() {
 
@@ -16,6 +17,8 @@ describe('#chat', function() {
     this.res = {
       render: sinon.spy()
     };
+
+    controller.__set__('getSongs', this.getSongs);
   });
 
   it('renders view', function() {
@@ -23,9 +26,17 @@ describe('#chat', function() {
     expect(this.res.render).to.have.been.called;
   });
 
-  // it('renders view with user', function() {
-  //   controller.chat(this.req, this.res);
-  //   expect(this.res.render).to.have.been.calledWith('chat', this.re)
-  // });
+  it('gets songs', function() {
+    // this.req = {
+    //   q: 'Foo+Fighters'
+    // };
+
+    // this.res = {
+    //   songs: sinon.spy()
+    // };
+    // this.req.q = 'Foo+Fighters';
+    // controller.songs(this.req, this.res);
+    // expect(this.getSongs).to.have.been.called;
+  });
 
 });
