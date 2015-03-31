@@ -3,6 +3,8 @@ html
   body
     if user
         h1 Hello #{ user.username }
+        form(action="/logout" method="post")
+            button Log Out
     else
         form(method="post" action="/login")
           input(type="text" name="username" placeholder="username")
