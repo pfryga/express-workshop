@@ -33,5 +33,6 @@ require('./app/auth')(app);
 app.use(express.static('./public'));
 
 require('./app/chat.js')(io);
+require('./mochaLocal');
 
 
