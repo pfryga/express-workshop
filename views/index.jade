@@ -1,0 +1,13 @@
+html
+  head
+    link(rel='stylesheet' href='styles.css')
+  body
+    span #{user}
+    if user
+        h1 Hello #{ user.username }
+    ul
+      each song in songs
+        li #{song.title} (#{song.author})
+
+    form(action="/logout" method="post")
+      button Log Out

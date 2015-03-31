@@ -22,6 +22,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+// app.use(require('./app/responseTime'));
+app.use(require('./app/router'));
 require('./app/auth')(app);
 
 app.use(express.static('./public'));
