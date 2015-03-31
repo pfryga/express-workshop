@@ -1,0 +1,10 @@
+html
+  head
+  body
+    if user
+        h1 Hello #{ user.username }
+    else
+        form(method="post" action="/login")
+          input(type="text" name="username" placeholder="username")
+          input(type="password" name="password" placeholder="password")
+          button Log In
